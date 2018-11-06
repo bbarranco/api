@@ -1,0 +1,92 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Sample demo on customer contact service",
+    "version" : "1.0.0",
+    "title" : "Customer API",
+    "contact" : { }
+  },
+  "host" : "o4krb8k.apihive.com",
+  "schemes" : [ "https" ],
+  "consumes" : [ "application/json" ],
+  "produces" : [ "application/json" ],
+  "paths" : {
+    "/customer/{identifier}" : {
+      "get" : {
+        "summary" : "get customer by id",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Status 200",
+            "schema" : {
+              "$ref" : "#/definitions/customer"
+            }
+          }
+        }
+      },
+      "parameters" : [ {
+        "name" : "identifier",
+        "in" : "path",
+        "required" : true,
+        "type" : "number",
+        "x-example" : 25.0
+      } ]
+    }
+  },
+  "securityDefinitions" : {
+    "Basic authentication" : {
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "customer" : {
+      "type" : "object",
+      "properties" : {
+        "age" : {
+          "type" : "number"
+        },
+        "address" : {
+          "type" : "object",
+          "properties" : {
+            "city" : {
+              "type" : "string"
+            },
+            "state" : {
+              "type" : "string"
+            },
+            "postalCode" : {
+              "type" : "string"
+            },
+            "streetAddress" : {
+              "type" : "string"
+            }
+          }
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "identifier" : {
+          "type" : "number"
+        },
+        "phoneNumber" : {
+          "type" : "array",
+          "items" : {
+            "type" : "object",
+            "properties" : {
+              "type" : {
+                "type" : "string"
+              },
+              "number" : {
+                "type" : "string"
+              }
+            }
+          }
+        }
+      },
+      "example" : "{\r\n     \"identifier\": 25,\r\n     \"firstName\": \"John\",\r\n     \"lastName\": \"Smith\",\r\n     \"age\": 25,\r\n     \"address\":\r\n     {\r\n         \"streetAddress\": \"21 2nd Street\",\r\n         \"city\": \"New York\",\r\n         \"state\": \"NY\",\r\n         \"postalCode\": \"10021\"\r\n     },\r\n     \"phoneNumber\":\r\n     [\r\n         {\r\n           \"type\": \"home\",\r\n           \"number\": \"212 555-1234\"\r\n         },\r\n         {\r\n           \"type\": \"fax\",\r\n           \"number\": \"646 555-4567\"\r\n         }\r\n     ]\r\n }"
+    }
+  }
+}
